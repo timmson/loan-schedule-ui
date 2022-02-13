@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <title>Loan Amortization Schedule</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="img/icon-48x48.png">
+</head>
+<body class="bg-light">
+<div id="app"></div>
+<script src="index.js"></script>
+<script type="application/javascript">
+	window.addEventListener("load", async () => {
+		if ("serviceWorker" in navigator) {
+			try {
+				await navigator.serviceWorker.register("sw.js");
+			} catch (e) {
+				console.log("Service worker register fail");
+			}
+		}
+	});
+</script>
+</body>
