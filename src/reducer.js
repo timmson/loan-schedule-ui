@@ -1,5 +1,6 @@
 import {CHANGE_FORM, UPDATE_SCHEDULE} from "./constants"
 import LoanSchedule from "loan-schedule.js"
+import {fromM, toM} from "./money"
 
 const loanSchedule = new LoanSchedule({
 	prodCalendar: "ru"
@@ -16,8 +17,16 @@ export default function Reducer(state, action) {
 	switch (action.type) {
 	case UPDATE_SCHEDULE: {
 		return {
-			...state,
-			schedule: schedule(state.request)
+			request: {
+				...state.request,
+				amount: toM(state.request.amount),
+				paymentAmount: toM(state.request.paymentAmount)
+			},
+			schedule: schedule({
+				...state.request,
+				amount: fromM(state.request.amount),
+				paymentAmount: fromM(state.request.paymentAmount)
+			})
 		}
 	}
 	case CHANGE_FORM: {

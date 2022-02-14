@@ -8,8 +8,8 @@ export default function Form(props) {
 	return (
 		<form className="form-horizontal">
 			<div className="row mt-5 text-left">
-				<Field name={"amount"} value={(request.amount)} description={"Loan amount, $"} type="money"/>
-				<Field name={"paymentAmount"} value={(request.paymentAmount)} description={"Payment amount, $"} placeholder="Payment amount" type="money"/>
+				<Field name={"amount"} value={(request.amount)} description={"Loan amount, $"}/>
+				<Field name={"paymentAmount"} value={(request.paymentAmount)} description={"Payment amount, $"} placeholder="Payment amount"/>
 			</div>
 			<div className="row mt-2 text-left">
 				<Field name={"term"} value={request.term} description={"Term, months"} type="number"/>

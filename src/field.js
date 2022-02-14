@@ -2,8 +2,6 @@ import React, {useContext} from "react"
 import PropTypes from "prop-types"
 import Context from "./context"
 import {CHANGE_FORM, UPDATE_SCHEDULE} from "./constants"
-import {fromM, toM} from "./money"
-
 
 export default function Field(props) {
 	const dispatch = useContext(Context)
@@ -11,7 +9,7 @@ export default function Field(props) {
 	const change = (element) => dispatch({
 		type: CHANGE_FORM,
 		name: element.name,
-		value: props.type === "money" ? fromM(element.value) : element.value
+		value: element.value
 	})
 
 	const submit = () => dispatch({type: UPDATE_SCHEDULE})
@@ -24,7 +22,7 @@ export default function Field(props) {
 			<div className="col-sm-3">
 				<input className="form-control"
 					   name={props.name}
-					   value={props.type === "money" ? toM(props.value) : props.value}
+					   value={props.value}
 					   placeholder={props.placeholder}
 					   type={props.type}
 					   min={props.min}
