@@ -19,6 +19,7 @@ module.exports = {
 		"sourceType": "module"
 	},
 	"rules": {
+		"no-mixed-spaces-and-tabs": 0,
 		"indent": [
 			"error",
 			"tab"

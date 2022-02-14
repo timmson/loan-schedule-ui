@@ -22,6 +22,8 @@ export default function App(props) {
 	const currentYear = new Date().getFullYear()
 
 	const [request, dispatch] = useReducer(Reducer, {}, () => props.storage.load())
+	console.log(JSON.stringify(request))
+
 	const schedule = loanSchedule.calculateSchedule(request)
 	schedule.lastPaymentDate = schedule.payments[schedule.payments.length - 1].paymentDate
 	schedule.termInYear = Math.ceil(schedule.term / 12)

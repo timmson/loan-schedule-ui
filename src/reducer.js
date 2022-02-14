@@ -1,5 +1,5 @@
+import {UPDATE_SCHEDULE} from "./constants"
+
 export default function Reducer(state, action) {
-	if (action!=null) {
-		return state
-	}
+	return action.type === UPDATE_SCHEDULE ? {...state, [action.name]: action.value} : state
 }
