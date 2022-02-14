@@ -1,44 +1,30 @@
 import React, {useEffect, useReducer} from "react"
 import PropTypes from "prop-types"
-import Accounting from "accounting"
-import LoanSchedule from "loan-schedule.js"
 
 import Context from "./context"
 import Form from "./form"
+import {toM} from "./money"
 import Reducer from "./reducer"
 import Schedule from "./schedule"
-
-
-const loanSchedule = new LoanSchedule({
-	prodCalendar: "ru"
-})
-
-
-function toMoney(number) {
-	return number ? Accounting.formatMoney(number, {symbol: "", format: "%s%v", thousand: " "}) : number
-}
+import {UPDATE_SCHEDULE} from "./constants"
 
 export default function App(props) {
 	const currentYear = new Date().getFullYear()
 
-	const [request, dispatch] = useReducer(Reducer, {}, () => props.storage.load())
-	console.log(JSON.stringify(request))
+	const request = props.storage.load()
+	const [state, dispatch] = useReducer(Reducer, {}, () => Reducer({request: request}, {type: UPDATE_SCHEDULE}))
 
-	const schedule = loanSchedule.calculateSchedule(request)
-	schedule.lastPaymentDate = schedule.payments[schedule.payments.length - 1].paymentDate
-	schedule.termInYear = Math.ceil(schedule.term / 12)
-
-	useEffect(() => props.storage.save(request), [request])
+	useEffect(() => props.storage.save(state.request), [state.request])
 
 	return (
 		<Context.Provider value={dispatch}>
 			<div className="container">
-				<Form request={request}/>
+				<Form request={state.request}/>
 
 				<div className="row mt-5 text-start ps-2">
 					<div className="col-9 orange">
-						{toMoney(schedule.overAllInterest)} ({toMoney(schedule.fullAmount)}),
-						{schedule.lastPaymentDate} (~{schedule.termInYear}Y)
+						{toM(state.schedule.overAllInterest)} ({toM(state.schedule.fullAmount)}),
+						{state.schedule.lastPaymentDate} (~{state.schedule.termInYear}Y)
 					</div>
 					<div className="col-3 text-end ps-2">
 						<a href="#">[Reset]</a>
@@ -47,7 +33,7 @@ export default function App(props) {
 					</div>
 				</div>
 
-				<Schedule schedule={schedule}/>
+				<Schedule schedule={state.schedule}/>
 
 				<div className="row">
 					<div className="col-12 text-end ps-2">

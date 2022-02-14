@@ -1,14 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
+
+import {toM} from "./money"
 import Payment from "./payment"
 
-import Accounting from "accounting"
-
-function toMoney(number) {
-	return number ? Accounting.formatMoney(number, {symbol: "", format: "%s%v", thousand: " "}) : number
-}
-
-Payment.propTypes = {payment: PropTypes.any}
 export default function Schedule(props) {
 	const  schedule = props.schedule
 
@@ -37,10 +32,10 @@ export default function Schedule(props) {
 						<tr className="pays">
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
-							<td>{toMoney(schedule.fullAmount)}</td>
+							<td>{toM(schedule.fullAmount)}</td>
 							<td>&nbsp;</td>
-							<td>{toMoney(schedule.amount)}</td>
-							<td>{toMoney(schedule.overAllInterest)}</td>
+							<td>{toM(schedule.amount)}</td>
+							<td>{toM(schedule.overAllInterest)}</td>
 							<td>&nbsp;</td>
 						</tr>
 					</tfoot>
