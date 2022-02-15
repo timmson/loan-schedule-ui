@@ -1,16 +1,25 @@
-import React from "react"
+import React, {useContext} from "react"
 import PropTypes from "prop-types"
 import {toM} from "./money"
+import {CUT_SCHEDULE} from "./constants";
+import Context from "./context";
 
 export default function Payment(props) {
 	const pay = props.payment
+	const paymentClass = ((parseInt(pay.principalAmount) > 0) && (parseInt(pay.interestAmount) === 0)) ? "orange" : ""
+
+	const dispatch = useContext(Context)
+	const cutSchedule = () => dispatch({
+			type: CUT_SCHEDULE,
+			amount: pay.finalBalance,
+			issueDate: pay.paymentDate,
+			term: pay.remainingTerm
+		}
+	)
 
 	return (
-		<tr className="pays" /*v-for="(pay,i) in schedule.payments"
-			v-bind:style="{color: ((parseInt(pay.principalAmount) > 0) && (parseInt(pay.interestAmount) === 0)) ? '#fd680e' : ''}"*/>
-			{/*			<td v-if="i === 0">{pay.paymentDate}</td>
-			<td v-else><a style="cursor:pointer;" v-on:click="copyPayment($event, i)">{pay.paymentDate}</a></td>*/}
-			<td>{pay.paymentDate}</td>
+		<tr className={paymentClass}>
+			<td style={{cursor: "pointer"}} onClick={() => cutSchedule()}>{pay.paymentDate}</td>
 			<td className={"desktop-cell"}>{toM(pay.initialBalance)}</td>
 			<td>{toM(pay.paymentAmount)}</td>
 			<td className={"desktop-cell"}>{toM(pay.annuityPaymentAmount)}</td>

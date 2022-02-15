@@ -9,10 +9,10 @@ import {faTelegram} from "@fortawesome/free-brands-svg-icons"
 
 import App from "./app"
 import Storage from "./storage"
-import ReducerFactory from "./reducer-factory"
+import Reducer from "./reducer"
 
 const storage = Storage(window)
-const reducer = ReducerFactory(storage, new LoanSchedule({prodCalendar: "ru"})).reducer
+const reducer = Reducer(storage, new LoanSchedule({prodCalendar: "ru"}))
 
 const currentYear = new Date().getFullYear()
 const shareUrl = () => {

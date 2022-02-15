@@ -1,7 +1,7 @@
-import {CHANGE_FORM, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "./constants"
+import {CHANGE_FORM, CUT_SCHEDULE, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "./constants"
 import {fromM, toM} from "./money"
 
-export default function ReducerFactory(storage, loanSchedule) {
+export default function Reducer(storage, loanSchedule) {
 
 	const init = () => {
 		const request = storage.load()
@@ -35,9 +35,8 @@ export default function ReducerFactory(storage, loanSchedule) {
 		}
 	}
 
-	return {
-		reducer: (state, action) => {
-			switch (action.type) {
+	return (state, action) => {
+		switch (action.type) {
 			case SET_DEFAULT: {
 				storage.reset()
 				return init()
@@ -60,10 +59,20 @@ export default function ReducerFactory(storage, loanSchedule) {
 					}
 				}
 			}
+
+			case CUT_SCHEDULE: {
+				return updateSchedule({
+					...state.request,
+					amount: action.amount,
+					issueDate: action.issueDate,
+					term: action.term
+				})
+			}
+
 			default: {
 				return state
 			}
-			}
 		}
 	}
+
 }

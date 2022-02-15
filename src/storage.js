@@ -1,7 +1,7 @@
 import LoanSchedule from "loan-schedule.js"
 
 
-export default function storage(window) {
+export default function Storage(window) {
 	const params = new URL(window.location.href).searchParams
 	const storage = window.localStorage
 	return {
