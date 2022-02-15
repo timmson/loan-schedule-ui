@@ -10,19 +10,20 @@ export default function ReducerFactory(storage, loanSchedule) {
 
 	const updateSchedule = (request) => {
 		storage.save(request)
-		const schedule = loanSchedule.calculateSchedule({
+		const filteredRequest = {
 			...request,
 			amount: fromM(request.amount),
 			paymentAmount: fromM(request.paymentAmount)
-		})
+		}
+		const schedule = loanSchedule.calculateSchedule(filteredRequest)
 		schedule.lastPaymentDate = schedule.payments[schedule.payments.length - 1].paymentDate
 		schedule.termInYear = Math.ceil(schedule.term / 12)
 		schedule.overAllInterest = toM(schedule.overAllInterest)
 		return {
 			request: {
-				...request,
-				amount: toM(request.amount),
-				paymentAmount: toM(request.paymentAmount)
+				...filteredRequest,
+				amount: toM(filteredRequest.amount),
+				paymentAmount: toM(filteredRequest.paymentAmount)
 			},
 			schedule: {
 				...schedule,

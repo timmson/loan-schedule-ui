@@ -6,7 +6,7 @@ export default function storage(window) {
 	const storage = window.localStorage
 	return {
 		load: () => {
-			const request = {
+			return {
 				amount: params.get("amount") || storage.getItem("amount") || 2000000,
 				rate: params.get("rate") || storage.getItem("rate") || 9.5,
 				term: params.get("term") || storage.getItem("term") || 240,
@@ -16,8 +16,6 @@ export default function storage(window) {
 				scheduleType: LoanSchedule.ANNUITY_SCHEDULE,
 				earlyRepayment: {}
 			}
-			console.log("Loaded tem - " + request.term)
-			return request
 		},
 		save: (request) => {
 			Object.entries(request)
