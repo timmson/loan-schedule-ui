@@ -1,62 +1,44 @@
-import React, {useEffect, useReducer} from "react"
+import React, {useReducer} from "react"
 import PropTypes from "prop-types"
-import {faTelegram} from "@fortawesome/free-brands-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-
-import Context from "./context"
-import Form from "./form"
-import {toM} from "./money"
-import Reducer from "./reducer"
-import Schedule from "./schedule"
-import {UPDATE_SCHEDULE} from "./constants"
 import {faArrowAltCircleDown, faArrowAltCircleUp} from "@fortawesome/free-regular-svg-icons"
 
-const shareUrl = () => {
-	window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}`, "blank")
-}
-
+import {INIT, SET_DEFAULT} from "./constants"
+import Context from "./context"
+import Form from "./form"
+import Schedule from "./schedule"
 
 export default function App(props) {
-	const currentYear = new Date().getFullYear()
-
-	const request = props.storage.load()
-	const [state, dispatch] = useReducer(Reducer, {}, () => Reducer({request: request}, {type: UPDATE_SCHEDULE}))
-
-	useEffect(() => props.storage.save(state.request), [state.request])
+	const [state, dispatch] = useReducer(props.reducer, {}, () => props.reducer({}, {type: INIT}))
+	const reset = () => dispatch({type: SET_DEFAULT})
 
 	return (
 		<Context.Provider value={dispatch}>
-			<div className="container">
-				<Form request={state.request}/>
+			<Form request={state.request}/>
 
-				<div className="row text-start mt-1">
-					<div className="col orange">
-						{toM(state.schedule.overAllInterest)} ({toM(state.schedule.fullAmount)}),
-						{state.schedule.lastPaymentDate} (~{state.schedule.termInYear}Y)
-					</div>
+			<div className="row text-start mt-1 orange border-bottom border-2 border-dark pb-2">
+				<div className="col-sm-4 orange">
+					<b>Overall %</b>: {state.schedule.overAllInterest}
 				</div>
-				<div className="row text-end mt-1">
-					<div className="col">
-						<a href="#">[Reset]</a>
-						<a href="#footer" id="header">[Bottom <FontAwesomeIcon icon={faArrowAltCircleDown}/>]</a>
-					</div>
+				<div className="col-sm-4 orange">
+					<b>Full amount, $</b>: {state.schedule.fullAmount}
 				</div>
+				<div className="col-sm-4 orange">
+					<b>Last payment</b>: {state.schedule.lastPaymentDate} (~{state.schedule.termInYear} years)
+				</div>
+			</div>
+			<div className="row text-end mt-1">
+				<div className="col">
+					<a href="#" onClick={() => reset()}>[Reset]</a>
+					<a href="#footer" id="header">[Bottom <FontAwesomeIcon icon={faArrowAltCircleDown}/>]</a>
+				</div>
+			</div>
 
-				<Schedule schedule={state.schedule}/>
+			<Schedule schedule={state.schedule}/>
 
-				<div className="row">
-					<div className="col-12 text-end ps-2">
-						<a href="#header" id="footer">[Top <FontAwesomeIcon icon={faArrowAltCircleUp}/>]</a>
-					</div>
-				</div>
-				<div className="row mt-5">
-					<div className="col text-end">
-						<a href="#" target="_blank" onClick={() => shareUrl()}>
-							[Share via <FontAwesomeIcon icon={faTelegram}/>]
-						</a>
-						<p className="copyright">&copy; {currentYear} timmson</p>
-					</div>
-					<div className="col-sm-1">&nbsp;</div>
+			<div className="row">
+				<div className="col-12 text-end ps-2">
+					<a href="#header" id="footer">[Top <FontAwesomeIcon icon={faArrowAltCircleUp}/>]</a>
 				</div>
 			</div>
 		</Context.Provider>
@@ -64,5 +46,5 @@ export default function App(props) {
 }
 
 App.propTypes = {
-	storage: PropTypes.object.isRequired
+	reducer: PropTypes.func.isRequired
 }

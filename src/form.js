@@ -15,13 +15,13 @@ export default function Form(props) {
 				<Field name={"term"} value={request.term} description={"Term, months"} type="number"/>
 				<Field name={"issueDate"} value={request.issueDate} description={"Issue date"} placeholder="dd.mm.yyyy"/>
 			</div>
-			<div className="row mt-2 text-left">
+			<div className="row mt-2 text-left border-bottom border-1 border-dark pb-2 border-">
 				<Field name={"rate"} value={request.rate} description={"Annual rate, %"} type="number" step="0.01"/>
 				<Field name={"paymentOnDay"} value={request.paymentOnDay} description={"Payment on day"} min="0" max="28"/>
 			</div>
-			<div className="row mt-2 text-left border-top border-bottom border-2 border-dark pt-2 pb-2">
+			<div className="row mt-2 text-left border-bottom border-2 border-dark pb-2">
 				<Field name={"earlyRepaymentDate"} value={""} description={"Early repayment date"} placeholder="dd.mm.yyyy" type="text"/>
-				<Field name={"earlyRepaymentAmount"} value={""} description={"Early rep. amount"} placeholder="10 000.00" type="money"/>
+				<Field name={"earlyRepaymentAmount"} value={""} description={"Early repayment amount"} placeholder="10 000.00" type="money"/>
 			</div>
 		</form>
 	)

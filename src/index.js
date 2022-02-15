@@ -3,14 +3,36 @@ import "./index.scss"
 
 import React from "react"
 import ReactDOM from "react-dom"
+import LoanSchedule from "loan-schedule.js"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faTelegram} from "@fortawesome/free-brands-svg-icons"
+
 import App from "./app"
-
 import Storage from "./storage"
+import ReducerFactory from "./reducer-factory"
+
 const storage = Storage(window)
-ReactDOM.render(<App storage={storage}/>, document.getElementById("app"))
+const reducer = ReducerFactory(storage, new LoanSchedule({prodCalendar: "ru"})).reducer
 
+const currentYear = new Date().getFullYear()
+const shareUrl = () => {
+	window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}`, "blank")
+}
 
-
+ReactDOM.render(
+	<div className="container">
+		<App reducer={reducer}/>
+		<div className="row mt-5">
+			<div className="col text-end">
+				<a href="#" target="_blank" onClick={() => shareUrl()}>
+					[Share via <FontAwesomeIcon icon={faTelegram}/>]
+				</a>
+				<p className="copyright">&copy; {currentYear} timmson</p>
+			</div>
+			<div className="col-sm-1">&nbsp;</div>
+		</div>
+	</div>
+	, document.getElementById("app"))
 
 
 /*const telegramShareUrl = "https://t.me/share/url"*/

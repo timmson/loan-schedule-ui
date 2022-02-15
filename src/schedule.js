@@ -35,7 +35,7 @@ export default function Schedule(props) {
 						{schedule.payments.map((payment, i) => <Payment key={i} payment={payment}/>)}
 					</tbody>
 					<tfoot>
-						<tr className="pays">
+						<tr>
 							<td>&nbsp;</td>
 							<td className={"desktop-cell"}>&nbsp;</td>
 							<td>{toM(schedule.fullAmount)}</td>

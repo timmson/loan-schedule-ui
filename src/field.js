@@ -38,7 +38,7 @@ export default function Field(props) {
 
 Field.propTypes = {
 	name: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired,
+	value: PropTypes.any.isRequired,
 	description: PropTypes.string.isRequired,
 	placeholder: PropTypes.string,
 	type: PropTypes.string,
