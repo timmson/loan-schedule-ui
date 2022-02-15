@@ -1,4 +1,4 @@
-import {CHANGE_FORM, CUT_SCHEDULE, DELETE_EARLY, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "./constants"
+import {ADD_EARLY, CHANGE_FORM, DELETE_EARLY, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "./constants"
 import {fromM, toM} from "./money"
 
 export default function Reducer(storage, loanSchedule) {
@@ -22,8 +22,8 @@ export default function Reducer(storage, loanSchedule) {
 				erAmount: filteredRequest.earlyRepaymentAmount,
 				erType: loanSchedule.ER_TYPE_MATURITY
 			}
-			filteredRequest.earlyRepaymentDate = ""
-			filteredRequest.earlyRepaymentAmount = ""
+			delete filteredRequest.earlyRepaymentDate
+			delete filteredRequest.earlyRepaymentAmount
 		}
 
 		const schedule = loanSchedule.calculateSchedule(filteredRequest)
@@ -71,12 +71,21 @@ export default function Reducer(storage, loanSchedule) {
 			}
 		}
 
-		case CUT_SCHEDULE: {
+
+		/*			case CUT_SCHEDULE: {
+				return updateSchedule({
+					...state.request,
+					amount: action.amount,
+					issueDate: action.issueDate,
+					term: action.term
+				})
+			}*/
+
+		case ADD_EARLY: {
 			return updateSchedule({
 				...state.request,
-				amount: action.amount,
-				issueDate: action.issueDate,
-				term: action.term
+				earlyRepaymentDate: action.date,
+				earlyRepaymentAmount: action.amount
 			})
 		}
 

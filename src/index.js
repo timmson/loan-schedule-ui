@@ -31,8 +31,8 @@ ReactDOM.render(
 			</div>
 			<div className="col-sm-1">&nbsp;</div>
 		</div>
-	</div>
-	, document.getElementById("app"))
+	</div>,
+	document.getElementById("app"))
 
 
 /*const telegramShareUrl = "https://t.me/share/url"*/

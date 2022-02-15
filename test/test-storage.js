@@ -9,15 +9,12 @@ describe("Storage should", () => {
 	test("load default request", () => {
 		const expected = {
 			"amount": 2000000,
-			"earlyRepayment": {},
 			"issueDate": new Intl.DateTimeFormat("ru").format(new Date()),
 			"paymentAmount": "",
 			"paymentOnDay": 1,
 			"rate": 9.5,
 			"scheduleType": "ANNUITY",
-			"term": 240,
-			"earlyRepaymentAmount": "",
-			"earlyRepaymentDate": ""
+			"term": 240
 		}
 		const storage = Storage({
 			localStorage: {
@@ -35,7 +32,6 @@ describe("Storage should", () => {
 	test("save request", () => {
 		const arrange = {
 			"amount": 2000000,
-			"earlyRepayment": {},
 			"issueDate": new Intl.DateTimeFormat("ru").format(new Date()),
 			"paymentAmount": "",
 			"paymentOnDay": 1,

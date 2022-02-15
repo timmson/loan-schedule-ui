@@ -17,9 +17,6 @@ export default function Storage(window) {
 		load: () => {
 			const request = {
 				scheduleType: LoanSchedule.ANNUITY_SCHEDULE,
-				earlyRepaymentDate: "",
-				earlyRepaymentAmount: "",
-				earlyRepayment: {}
 			}
 			Object.keys(fields).forEach((name) => request[name] = params.get(name) || storage.getItem(name) || fields[name])
 			return request

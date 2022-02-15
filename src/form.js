@@ -1,27 +1,34 @@
-import React from "react"
+import React, {useContext} from "react"
 import PropTypes from "prop-types"
 import Field from "./field"
+import {CHANGE_FORM, UPDATE_SCHEDULE} from "./constants"
+import Context from "./context"
 
 export default function Form(props) {
 	const request = props.request
 
+	const dispatch = useContext(Context)
+	const change = (element) => dispatch({
+		type: CHANGE_FORM,
+		name: element.name,
+		value: element.value
+	})
+
+	const submit = () => dispatch({type: UPDATE_SCHEDULE})
+
 	return (
-		<form className="form-horizontal">
+		<form className="form-horizontal" onBlur={() => submit()}>
 			<div className="row mt-2 text-left">
-				<Field name={"amount"} value={(request.amount)} description={"Loan amount, $"}/>
-				<Field name={"paymentAmount"} value={(request.paymentAmount)} description={"Payment amount, $"} placeholder="Payment amount" type="money"/>
+				<Field name={"amount"} value={(request.amount)} description={"Loan amount, $"} onChange={(event) => change(event.target)}/>
+				<Field name={"paymentAmount"} value={(request.paymentAmount)} description={"Payment amount, $"} placeholder="Payment amount" onChange={(event) => change(event.target)}/>
 			</div>
 			<div className="row mt-2 text-left">
-				<Field name={"term"} value={request.term} description={"Term, months"} type="number"/>
-				<Field name={"issueDate"} value={request.issueDate} description={"Issue date"} placeholder="dd.mm.yyyy"/>
-			</div>
-			<div className="row mt-2 text-left border-bottom border-1 border-dark pb-2 border-">
-				<Field name={"rate"} value={request.rate} description={"Annual rate, %"} type="number" step="0.01"/>
-				<Field name={"paymentOnDay"} value={request.paymentOnDay} description={"Payment on day"} min="0" max="28"/>
+				<Field name={"term"} value={request.term} description={"Term, months"} type="number" onChange={(event) => change(event.target)}/>
+				<Field name={"issueDate"} value={request.issueDate} description={"Issue date"} placeholder="dd.mm.yyyy" onChange={(event) => change(event.target)}/>
 			</div>
 			<div className="row mt-2 text-left border-bottom border-2 border-dark pb-2">
-				<Field name={"earlyRepaymentDate"} value={request.earlyRepaymentDate} description={"Early repayment date"} placeholder="dd.mm.yyyy" type="text"/>
-				<Field name={"earlyRepaymentAmount"} value={request.earlyRepaymentAmount} description={"Early repayment amount"} placeholder="Early repayment amount" type="money"/>
+				<Field name={"rate"} value={request.rate} description={"Annual rate, %"} type="number" step="0.01" onChange={(event) => change(event.target)}/>
+				<Field name={"paymentOnDay"} value={request.paymentOnDay} description={"Payment on day"} min="0" max="28" onChange={(event) => change(event.target)}/>
 			</div>
 		</form>
 	)

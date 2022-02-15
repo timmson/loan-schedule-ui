@@ -1,5 +1,5 @@
 import Reducer from "../src/reducer"
-import {CHANGE_FORM, CUT_SCHEDULE, DELETE_EARLY, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "../src/constants"
+import {ADD_EARLY, CHANGE_FORM, DELETE_EARLY, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "../src/constants"
 
 const defaultSchedule = {
 	payments: [
@@ -28,40 +28,32 @@ describe("Reducer should", () => {
 
 	test("init", () => {
 		const expected = {request: {amount: "2 000.00", paymentAmount: undefined}, schedule: defaultSchedule}
-
 		const actual = reducer({}, {type: INIT})
-
 		expect(actual).toEqual(expected)
 		expect.assertions(2)
 	})
 
 	test("set default", () => {
 		const expected = {request: {amount: "2 000.00", paymentAmount: undefined}, schedule: defaultSchedule}
-
 		const actual = reducer({}, {type: SET_DEFAULT})
-
 		expect(actual).toEqual(expected)
 		expect.assertions(3)
 	})
 
 	test("update schedule", () => {
 		const expected = {request: {amount: "2 000.00", paymentAmount: undefined}, schedule: defaultSchedule}
-
 		const actual = reducer({request: expected.request}, {type: UPDATE_SCHEDULE})
-
 		expect(actual).toEqual(expected)
 		expect.assertions(2)
 	})
 
 	test("change form", () => {
 		const expected = {request: {amount: 300, term: 200}}
-
 		const actual = reducer({request: {amount: 100, term: 200}}, {type: CHANGE_FORM, name: "amount", value: 300})
-
 		expect(actual).toEqual(expected)
 	})
 
-	test("cut schedule", () => {
+	/*	test("cut schedule", () => {
 		const expected = {
 			request: {amount: "200.00", term: 50, issueDate: "30.03.2022"},
 			schedule: {
@@ -71,19 +63,21 @@ describe("Reducer should", () => {
 				fullAmount: "3 000.00"
 			}
 		}
-
 		const reducer = Reducer(storage, {calculateSchedule: () => expected.schedule})
-
 		const actual = reducer({request: {amount: 100, term: 200}}, {type: CUT_SCHEDULE, amount: 200, issueDate: "30.03.2022", term: 50})
-
 		expect(actual).toEqual(expected)
+	})*/
+
+	test("add early", () => {
+		const expected = {request: {earlyRepayment: {"10.11.2021": {}}}, schedule: defaultSchedule}
+		const actual = reducer({request: expected.request}, {type: ADD_EARLY, date: "10.11.2021", amount: 1000})
+		expect(actual).toEqual(expected)
+		expect.assertions(2)
 	})
 
 	test("delete early", () => {
 		const expected = {request: {earlyRepayment: {"10.11.2021": {}}}, schedule: defaultSchedule}
-
 		const actual = reducer({request: expected.request}, {type: DELETE_EARLY, date: "10.11.2021"})
-
 		expect(actual.request.earlyRepayment["10.11.2021"]).toBeUndefined()
 		expect.assertions(2)
 	})
@@ -91,15 +85,10 @@ describe("Reducer should", () => {
 
 	test("default", () => {
 		const expected = {request: {amount: 300, term: 200}}
-
 		const actual = reducer(expected, {type: "any"})
-
 		expect(actual).toEqual(expected)
 
 	})
-	/**
-	 * Add test for UPDATE_SCHEDULE
-	 */
 
 })
 
