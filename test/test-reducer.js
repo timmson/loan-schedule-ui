@@ -1,5 +1,5 @@
 import Reducer from "../src/reducer"
-import {CHANGE_FORM, CUT_SCHEDULE, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "../src/constants"
+import {CHANGE_FORM, CUT_SCHEDULE, DELETE_EARLY, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "../src/constants"
 
 const defaultSchedule = {
 	payments: [
@@ -78,6 +78,16 @@ describe("Reducer should", () => {
 
 		expect(actual).toEqual(expected)
 	})
+
+	test("delete early", () => {
+		const expected = {request: {earlyRepayment: {"10.11.2021": {}}}, schedule: defaultSchedule}
+
+		const actual = reducer({request: expected.request}, {type: DELETE_EARLY, date: "10.11.2021"})
+
+		expect(actual.request.earlyRepayment["10.11.2021"]).toBeUndefined()
+		expect.assertions(2)
+	})
+
 
 	test("default", () => {
 		const expected = {request: {amount: 300, term: 200}}

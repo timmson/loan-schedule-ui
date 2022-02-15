@@ -1,44 +1,41 @@
 import LoanSchedule from "loan-schedule.js"
 
+const fields = {
+	amount: 2000000,
+	rate: 9.5,
+	term: 240,
+	paymentAmount: "",
+	issueDate: new Intl.DateTimeFormat("ru").format(new Date()),
+	paymentOnDay: 1
+}
 
 export default function Storage(window) {
 	const params = new URL(window.location.href).searchParams
 	const storage = window.localStorage
+
 	return {
 		load: () => {
-			return {
-				amount: params.get("amount") || storage.getItem("amount") || 2000000,
-				rate: params.get("rate") || storage.getItem("rate") || 9.5,
-				term: params.get("term") || storage.getItem("term") || 240,
-				paymentAmount: params.get("paymentAmount") || storage.getItem("paymentAmount") || "",
-				issueDate: params.get("issueDate") || storage.getItem("issueDate") || new Intl.DateTimeFormat("ru").format(new Date()),
-				paymentOnDay: params.get("paymentOnDay") || storage.getItem("paymentOnDay") || 1,
+			const request = {
 				scheduleType: LoanSchedule.ANNUITY_SCHEDULE,
+				earlyRepaymentDate: "",
+				earlyRepaymentAmount: "",
 				earlyRepayment: {}
 			}
+			Object.keys(fields).forEach((name) => request[name] = params.get(name) || storage.getItem(name) || fields[name])
+			return request
 		},
-		save: (request) => {
-			Object.entries(request)
-				.filter((e) => !(e[1] instanceof Object))
-				.map(([key, value]) => window.localStorage.setItem(key, value.toString()))
 
-			params.set("amount", request.amount)
-			params.set("rate", request.rate)
-			params.set("term", request.term)
-			params.set("paymentAmount", request.paymentAmount)
-			params.set("issueDate", request.issueDate)
-			params.set("paymentOnDay", request.paymentOnDay)
+		save: (request) => {
+			Object.keys(fields).forEach((name) => {
+				window.localStorage.setItem(name, request[name])
+				params.set(name, request[name])
+			})
 			window.history.replaceState({}, "Loan Amortization Schedule", "?" + params.toString())
 		},
 
 		reset: () => {
 			window.localStorage.clear()
-			params.delete("amount")
-			params.delete("rate")
-			params.delete("term")
-			params.delete("paymentAmount")
-			params.delete("issueDate")
-			params.delete("paymentOnDay")
+			Object.keys(fields).forEach((name) => params.delete(name))
 			window.history.replaceState({}, "Loan Amortization Schedule", "?" + params.toString())
 		}
 

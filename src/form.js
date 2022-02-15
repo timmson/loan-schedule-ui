@@ -7,9 +7,9 @@ export default function Form(props) {
 
 	return (
 		<form className="form-horizontal">
-			<div className="row mt-5 text-left">
+			<div className="row mt-2 text-left">
 				<Field name={"amount"} value={(request.amount)} description={"Loan amount, $"}/>
-				<Field name={"paymentAmount"} value={(request.paymentAmount)} description={"Payment amount, $"} placeholder="Payment amount"/>
+				<Field name={"paymentAmount"} value={(request.paymentAmount)} description={"Payment amount, $"} placeholder="Payment amount" type="money"/>
 			</div>
 			<div className="row mt-2 text-left">
 				<Field name={"term"} value={request.term} description={"Term, months"} type="number"/>
@@ -20,8 +20,8 @@ export default function Form(props) {
 				<Field name={"paymentOnDay"} value={request.paymentOnDay} description={"Payment on day"} min="0" max="28"/>
 			</div>
 			<div className="row mt-2 text-left border-bottom border-2 border-dark pb-2">
-				<Field name={"earlyRepaymentDate"} value={""} description={"Early repayment date"} placeholder="dd.mm.yyyy" type="text"/>
-				<Field name={"earlyRepaymentAmount"} value={""} description={"Early repayment amount"} placeholder="10 000.00" type="money"/>
+				<Field name={"earlyRepaymentDate"} value={request.earlyRepaymentDate} description={"Early repayment date"} placeholder="dd.mm.yyyy" type="text"/>
+				<Field name={"earlyRepaymentAmount"} value={request.earlyRepaymentAmount} description={"Early repayment amount"} placeholder="Early repayment amount" type="money"/>
 			</div>
 		</form>
 	)

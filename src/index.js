@@ -20,9 +20,9 @@ const shareUrl = () => {
 }
 
 ReactDOM.render(
-	<div className="container">
+	<div className="container" style={{marginTop: 0, paddingTop: 0}}>
 		<App reducer={reducer}/>
-		<div className="row mt-5">
+		<div className="row mt-3">
 			<div className="col text-end">
 				<a href="#" target="_blank" onClick={() => shareUrl()}>
 					[Share via <FontAwesomeIcon icon={faTelegram}/>]

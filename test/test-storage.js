@@ -1,4 +1,4 @@
-import Storage from "../src/storage";
+import Storage from "../src/storage"
 
 describe("Storage should", () => {
 
@@ -15,7 +15,9 @@ describe("Storage should", () => {
 			"paymentOnDay": 1,
 			"rate": 9.5,
 			"scheduleType": "ANNUITY",
-			"term": 240
+			"term": 240,
+			"earlyRepaymentAmount": "",
+			"earlyRepaymentDate": ""
 		}
 		const storage = Storage({
 			localStorage: {
@@ -57,7 +59,7 @@ describe("Storage should", () => {
 
 		storage.save(arrange)
 
-		expect.assertions(9)
+		expect.assertions(8)
 	})
 
 	test("reset request", () => {

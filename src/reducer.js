@@ -1,4 +1,4 @@
-import {CHANGE_FORM, CUT_SCHEDULE, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "./constants"
+import {CHANGE_FORM, CUT_SCHEDULE, DELETE_EARLY, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "./constants"
 import {fromM, toM} from "./money"
 
 export default function Reducer(storage, loanSchedule) {
@@ -13,8 +13,19 @@ export default function Reducer(storage, loanSchedule) {
 		const filteredRequest = {
 			...request,
 			amount: fromM(request.amount),
-			paymentAmount: fromM(request.paymentAmount)
+			paymentAmount: fromM(request.paymentAmount),
+			earlyRepaymentAmount: fromM(request.earlyRepaymentAmount)
 		}
+
+		if (filteredRequest.earlyRepaymentDate && filteredRequest.earlyRepaymentAmount) {
+			filteredRequest.earlyRepayment[filteredRequest.earlyRepaymentDate] = {
+				erAmount: filteredRequest.earlyRepaymentAmount,
+				erType: loanSchedule.ER_TYPE_MATURITY
+			}
+			filteredRequest.earlyRepaymentDate = ""
+			filteredRequest.earlyRepaymentAmount = ""
+		}
+
 		const schedule = loanSchedule.calculateSchedule(filteredRequest)
 		schedule.lastPaymentDate = schedule.payments[schedule.payments.length - 1].paymentDate
 		schedule.termInYear = Math.ceil(schedule.term / 12)
@@ -37,41 +48,46 @@ export default function Reducer(storage, loanSchedule) {
 
 	return (state, action) => {
 		switch (action.type) {
-			case SET_DEFAULT: {
-				storage.reset()
-				return init()
-			}
+		case SET_DEFAULT: {
+			storage.reset()
+			return init()
+		}
 
-			case INIT: {
-				return init()
-			}
+		case INIT: {
+			return init()
+		}
 
-			case UPDATE_SCHEDULE: {
-				return updateSchedule(state.request)
-			}
+		case UPDATE_SCHEDULE: {
+			return updateSchedule(state.request)
+		}
 
-			case CHANGE_FORM: {
-				return {
-					...state,
-					request: {
-						...state.request,
-						[action.name]: action.value
-					}
+		case CHANGE_FORM: {
+			return {
+				...state,
+				request: {
+					...state.request,
+					[action.name]: action.value
 				}
 			}
+		}
 
-			case CUT_SCHEDULE: {
-				return updateSchedule({
-					...state.request,
-					amount: action.amount,
-					issueDate: action.issueDate,
-					term: action.term
-				})
-			}
+		case CUT_SCHEDULE: {
+			return updateSchedule({
+				...state.request,
+				amount: action.amount,
+				issueDate: action.issueDate,
+				term: action.term
+			})
+		}
 
-			default: {
-				return state
-			}
+		case DELETE_EARLY: {
+			delete state.request.earlyRepayment[action.date]
+			return updateSchedule(state.request)
+		}
+
+		default: {
+			return state
+		}
 		}
 	}
 
