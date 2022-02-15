@@ -14,7 +14,8 @@ describe("Storage should", () => {
 			"paymentOnDay": 1,
 			"rate": 9.5,
 			"scheduleType": "ANNUITY",
-			"term": 240
+			"term": 240,
+			"earlyRepayment": {}
 		}
 		const storage = Storage({
 			localStorage: {
