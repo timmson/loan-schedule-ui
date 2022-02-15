@@ -1,4 +1,4 @@
-import {fromM, toM} from "../src/money";
+import {fromM, toM} from "../src/money"
 
 describe("Money should", () => {
 

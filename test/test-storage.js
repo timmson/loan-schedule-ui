@@ -1,4 +1,4 @@
-import Storage from "../src/storage";
+import Storage from "../src/storage"
 
 describe("Storage should", () => {
 

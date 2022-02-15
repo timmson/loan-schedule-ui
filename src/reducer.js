@@ -37,41 +37,41 @@ export default function Reducer(storage, loanSchedule) {
 
 	return (state, action) => {
 		switch (action.type) {
-			case SET_DEFAULT: {
-				storage.reset()
-				return init()
-			}
+		case SET_DEFAULT: {
+			storage.reset()
+			return init()
+		}
 
-			case INIT: {
-				return init()
-			}
+		case INIT: {
+			return init()
+		}
 
-			case UPDATE_SCHEDULE: {
-				return updateSchedule(state.request)
-			}
+		case UPDATE_SCHEDULE: {
+			return updateSchedule(state.request)
+		}
 
-			case CHANGE_FORM: {
-				return {
-					...state,
-					request: {
-						...state.request,
-						[action.name]: action.value
-					}
+		case CHANGE_FORM: {
+			return {
+				...state,
+				request: {
+					...state.request,
+					[action.name]: action.value
 				}
 			}
+		}
 
-			case CUT_SCHEDULE: {
-				return updateSchedule({
-					...state.request,
-					amount: action.amount,
-					issueDate: action.issueDate,
-					term: action.term
-				})
-			}
+		case CUT_SCHEDULE: {
+			return updateSchedule({
+				...state.request,
+				amount: action.amount,
+				issueDate: action.issueDate,
+				term: action.term
+			})
+		}
 
-			default: {
-				return state
-			}
+		default: {
+			return state
+		}
 		}
 	}
 

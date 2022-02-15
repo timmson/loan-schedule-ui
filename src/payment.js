@@ -1,8 +1,8 @@
 import React, {useContext} from "react"
 import PropTypes from "prop-types"
 import {toM} from "./money"
-import {CUT_SCHEDULE} from "./constants";
-import Context from "./context";
+import {CUT_SCHEDULE} from "./constants"
+import Context from "./context"
 
 export default function Payment(props) {
 	const pay = props.payment
@@ -10,11 +10,11 @@ export default function Payment(props) {
 
 	const dispatch = useContext(Context)
 	const cutSchedule = () => dispatch({
-			type: CUT_SCHEDULE,
-			amount: pay.finalBalance,
-			issueDate: pay.paymentDate,
-			term: pay.remainingTerm
-		}
+		type: CUT_SCHEDULE,
+		amount: pay.finalBalance,
+		issueDate: pay.paymentDate,
+		term: pay.remainingTerm
+	}
 	)
 
 	return (
