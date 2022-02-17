@@ -34,7 +34,7 @@ describe("Form should", () => {
 	]
 	tc.forEach((t) =>
 		test(`trigger change of ${t.name} with value=${t.value}`, () => {
-			const expectedAction = {type: CHANGE_FORM, name: t.name, value: t.value};
+			const expectedAction = {type: CHANGE_FORM, name: t.name, value: t.value}
 			const dispatch = (action) => expect(action).toEqual(expectedAction)
 			component = createComponent({}, dispatch)
 

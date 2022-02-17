@@ -2,7 +2,7 @@ import React, {useContext} from "react"
 import PropTypes from "prop-types"
 import Field from "./field"
 import {CHANGE_FORM, UPDATE_SCHEDULE} from "./constants"
-import Context from "./context";
+import Context from "./context"
 
 export default function Form(props) {
 	const request = props.request

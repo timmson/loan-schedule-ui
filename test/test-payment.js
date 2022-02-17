@@ -1,6 +1,6 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import Payment from "../src/payment";
+import Payment from "../src/payment"
 
 
 describe("Payment should", () => {

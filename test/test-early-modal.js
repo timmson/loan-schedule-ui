@@ -8,14 +8,14 @@ describe("EarlyModal should", () => {
 
 	beforeAll(() => {
 		component = renderer.create(<EarlyModal
-				name={"name"} show={true}
-				ok={{name: "ok", action: () => null}}
-				close={{name: "close", action: () => null}}
-			>X</EarlyModal>
+			name={"name"} show={true}
+			ok={{name: "ok", action: () => null}}
+			close={{name: "close", action: () => null}}
+		>X</EarlyModal>
 		)
 	})
 
-/*	test("trigger close button", () => {
+	/*	test("trigger close button", () => {
 		expect(component.toJSON()).toMatchSnapshot()
 	})*/
 
