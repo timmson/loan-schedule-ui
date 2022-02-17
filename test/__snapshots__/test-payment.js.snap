@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Payment should equal to snapshot 1`] = `
+<tr
+  className=""
+  onClick={[Function]}
+  style={
+    Object {
+      "cursor": "pointer",
+    }
+  }
+>
+  <td>
+    25.10.2012
+  </td>
+  <td />
+  <td
+    className="desktop-cell"
+  />
+  <td
+    className="desktop-cell"
+  />
+  <td />
+  <td />
+</tr>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field should equal to snapshot 1`] = `
+Array [
+  <div
+    className="col-sm-3 pt-2"
+  >
+    <label
+      htmlFor="name"
+    >
+      value
+    </label>
+  </div>,
+  <div
+    className="col-sm-3"
+  >
+    <input
+      className="form-control"
+      name="name"
+      onChange={[Function]}
+      value="value"
+    />
+  </div>,
+]
+`;

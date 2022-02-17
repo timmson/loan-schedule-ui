@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Schedule should equal to snapshot 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-sm-12 text-center"
+  >
+    <table
+      className="table table-hover table-bordered w-100 border-dark"
+    >
+      <thead
+        className="table-secondary"
+      >
+        <tr
+          className="desktop"
+        >
+          <th
+            rowSpan="2"
+          >
+            Date
+          </th>
+          <th
+            rowSpan="2"
+          >
+            Payment, $
+          </th>
+          <th
+            rowSpan="2"
+          >
+            Min. payment, $
+          </th>
+          <th
+            colSpan="2"
+          >
+            Inc.
+          </th>
+          <th
+            rowSpan="2"
+          >
+            Balance, $
+          </th>
+        </tr>
+        <tr
+          className="desktop"
+        >
+          <th>
+            Principal, $
+          </th>
+          <th>
+            Interest, $
+          </th>
+        </tr>
+        <tr
+          className="mobile"
+        >
+          <th>
+            Date
+          </th>
+          <th>
+            Payment, $
+          </th>
+          <th>
+            Interest, $
+          </th>
+          <th>
+            Balance, $
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          className="orange"
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        >
+          <td />
+          <td />
+          <td
+            className="desktop-cell"
+          />
+          <td
+            className="desktop-cell"
+          >
+            1.00
+          </td>
+          <td>
+            0
+          </td>
+          <td />
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+             
+          </td>
+          <td />
+          <td
+            className="desktop-cell"
+          >
+             
+          </td>
+          <td
+            className="desktop-cell"
+          />
+          <td />
+          <td>
+             
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+`;

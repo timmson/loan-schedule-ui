@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form should equal to snapshot 1`] = `
+<form
+  className="form-horizontal"
+  onBlur={[Function]}
+>
+  <div
+    className="row mt-2 text-left"
+  >
+    <div
+      className="col-sm-3 pt-2"
+    >
+      <label
+        htmlFor="amount"
+      >
+        Loan amount, $
+      </label>
+    </div>
+    <div
+      className="col-sm-3"
+    >
+      <input
+        className="form-control"
+        name="amount"
+        onChange={[Function]}
+      />
+    </div>
+    <div
+      className="col-sm-3 pt-2"
+    >
+      <label
+        htmlFor="paymentAmount"
+      >
+        Payment amount, $
+      </label>
+    </div>
+    <div
+      className="col-sm-3"
+    >
+      <input
+        className="form-control"
+        name="paymentAmount"
+        onChange={[Function]}
+        placeholder="Payment amount"
+      />
+    </div>
+  </div>
+  <div
+    className="row mt-2 text-left"
+  >
+    <div
+      className="col-sm-3 pt-2"
+    >
+      <label
+        htmlFor="term"
+      >
+        Term, months
+      </label>
+    </div>
+    <div
+      className="col-sm-3"
+    >
+      <input
+        className="form-control"
+        name="term"
+        onChange={[Function]}
+        type="number"
+      />
+    </div>
+    <div
+      className="col-sm-3 pt-2"
+    >
+      <label
+        htmlFor="issueDate"
+      >
+        Issue date
+      </label>
+    </div>
+    <div
+      className="col-sm-3"
+    >
+      <input
+        className="form-control"
+        name="issueDate"
+        onChange={[Function]}
+        placeholder="dd.mm.yyyy"
+      />
+    </div>
+  </div>
+  <div
+    className="row mt-2 text-left border-bottom border-2 border-dark pb-2"
+  >
+    <div
+      className="col-sm-3 pt-2"
+    >
+      <label
+        htmlFor="rate"
+      >
+        Annual rate, %
+      </label>
+    </div>
+    <div
+      className="col-sm-3"
+    >
+      <input
+        className="form-control"
+        name="rate"
+        onChange={[Function]}
+        step="0.01"
+        type="number"
+      />
+    </div>
+    <div
+      className="col-sm-3 pt-2"
+    >
+      <label
+        htmlFor="paymentOnDay"
+      >
+        Payment on day
+      </label>
+    </div>
+    <div
+      className="col-sm-3"
+    >
+      <input
+        className="form-control"
+        max="28"
+        min="0"
+        name="paymentOnDay"
+        onChange={[Function]}
+      />
+    </div>
+  </div>
+</form>
+`;

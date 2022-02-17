@@ -49,7 +49,7 @@ describe("Storage should", () => {
 			history: {
 				replaceState: (data, name, url) => {
 					expect(name).toEqual("Loan Amortization Schedule")
-					expect(url).toEqual("?amount=2000000&rate=9.5&term=240&paymentAmount=&issueDate=15.02.2022&paymentOnDay=1")
+					expect(url).toEqual(`?amount=2000000&rate=9.5&term=240&paymentAmount=&issueDate=${arrange.issueDate}&paymentOnDay=1`)
 				}
 			}
 		})
