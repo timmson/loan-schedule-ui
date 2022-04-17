@@ -1,10 +1,14 @@
 import React, {useContext} from "react"
-import PropTypes from "prop-types"
 import Field from "./field"
 import {CHANGE_FORM, UPDATE_SCHEDULE} from "./constants"
 import Context from "./context"
+import {RequestType} from "./types"
 
-export default function Form(props) {
+type FormProps = {
+	request: RequestType
+}
+
+export default function Form(props: FormProps) {
 	const request = props.request
 
 	const dispatch = useContext(Context)
@@ -23,17 +27,13 @@ export default function Form(props) {
 				<Field name={"paymentAmount"} value={(request.paymentAmount)} description={"Payment amount, $"} placeholder="Payment amount" onChange={(event) => change(event.target)}/>
 			</div>
 			<div className="row mt-2 text-left">
-				<Field name={"term"} value={request.term} description={"Term, months"} type="number" onChange={(event) => change(event.target)}/>
+				<Field name={"term"} value={request.term.toString()} description={"Term, months"} type="number" onChange={(event) => change(event.target)}/>
 				<Field name={"issueDate"} value={request.issueDate} description={"Issue date"} placeholder="dd.mm.yyyy" onChange={(event) => change(event.target)}/>
 			</div>
 			<div className="row mt-2 text-left border-bottom border-2 border-dark pb-2">
 				<Field name={"rate"} value={request.rate} description={"Annual rate, %"} type="number" step="0.01" onChange={(event) => change(event.target)}/>
-				<Field name={"paymentOnDay"} value={request.paymentOnDay} description={"Payment on day"} min="0" max="28" onChange={(event) => change(event.target)}/>
+				<Field name={"paymentOnDay"} value={request.paymentOnDay.toString()} description={"Payment on day"} min="0" max="28" onChange={(event) => change(event.target)}/>
 			</div>
 		</form>
 	)
-}
-
-Form.propTypes = {
-	request: PropTypes.object.isRequired
 }

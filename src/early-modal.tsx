@@ -1,8 +1,21 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {Button, Modal} from "react-bootstrap"
 
-export default function EarlyModal(props) {
+type EarlyModalProps = {
+    show: boolean,
+    name: string,
+    ok: {
+        name: string
+        action: () => void
+    },
+    close: {
+        name: string
+        action: () => void
+    },
+    children: React.ReactNode
+}
+
+export default function EarlyModal(props: EarlyModalProps) {
 	return (
 		<Modal show={props.show}>
 			<Modal.Header closeButton onClick={() => props.close.action()}>
@@ -19,13 +32,5 @@ export default function EarlyModal(props) {
 			</Modal.Footer>
 		</Modal>
 	)
-}
-
-EarlyModal.propTypes = {
-	show: PropTypes.bool.isRequired,
-	name: PropTypes.string.isRequired,
-	ok: PropTypes.object.isRequired,
-	close: PropTypes.object.isRequired,
-	children: PropTypes.any
 }
 

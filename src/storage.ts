@@ -1,4 +1,5 @@
 import LoanSchedule from "loan-schedule.js"
+import {RequestType} from "./types"
 
 const fields = {
 	amount: 2000000,
@@ -14,7 +15,7 @@ export default function Storage(window) {
 	const storage = window.localStorage
 
 	return {
-		load: () => {
+		load: (): RequestType => {
 			const request = {
 				scheduleType: LoanSchedule.ANNUITY_SCHEDULE,
 				earlyRepayment: {}
@@ -23,7 +24,7 @@ export default function Storage(window) {
 			return request
 		},
 
-		save: (request) => {
+		save: (request: RequestType) => {
 			Object.keys(fields).forEach((name) => {
 				window.localStorage.setItem(name, request[name])
 				params.set(name, request[name])

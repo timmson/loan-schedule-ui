@@ -17,27 +17,27 @@ exports[`Schedule should equal to snapshot 1`] = `
           className="desktop"
         >
           <th
-            rowSpan="2"
+            rowSpan={2}
           >
             Date
           </th>
           <th
-            rowSpan="2"
+            rowSpan={2}
           >
             Payment, $
           </th>
           <th
-            rowSpan="2"
+            rowSpan={2}
           >
             Min. payment, $
           </th>
           <th
-            colSpan="2"
+            colSpan={2}
           >
             Inc.
           </th>
           <th
-            rowSpan="2"
+            rowSpan={2}
           >
             Balance, $
           </th>
@@ -90,7 +90,7 @@ exports[`Schedule should equal to snapshot 1`] = `
             1.00
           </td>
           <td>
-            0
+            0.00
           </td>
           <td />
         </tr>

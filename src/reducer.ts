@@ -1,5 +1,6 @@
 import {ADD_EARLY, CHANGE_FORM, DELETE_EARLY, INIT, SET_DEFAULT, UPDATE_SCHEDULE} from "./constants"
 import {fromM, toM} from "./money"
+import {ActionType, RequestType, StateType} from "./types"
 
 export default function Reducer(storage, loanSchedule) {
 
@@ -8,7 +9,7 @@ export default function Reducer(storage, loanSchedule) {
 		return updateSchedule(request)
 	}
 
-	const updateSchedule = (request) => {
+	const updateSchedule = (request: RequestType): StateType => {
 		storage.save(request)
 		const filteredRequest = {
 			...request,
@@ -46,7 +47,7 @@ export default function Reducer(storage, loanSchedule) {
 		}
 	}
 
-	return (state, action) => {
+	return (state: StateType, action: ActionType) => {
 		switch (action.type) {
 		case SET_DEFAULT: {
 			storage.reset()
@@ -70,16 +71,6 @@ export default function Reducer(storage, loanSchedule) {
 				}
 			}
 		}
-
-
-		/*			case CUT_SCHEDULE: {
-				return updateSchedule({
-					...state.request,
-					amount: action.amount,
-					issueDate: action.issueDate,
-					term: action.term
-				})
-			}*/
 
 		case ADD_EARLY: {
 			return updateSchedule({

@@ -48,29 +48,14 @@ describe("Reducer should", () => {
 	})
 
 	test("change form", () => {
-		const expected = {request: {amount: 300, term: 200}}
-		const actual = reducer({request: {amount: 100, term: 200}}, {type: CHANGE_FORM, name: "amount", value: 300})
+		const expected = {request: {amount: "300", term: 200}}
+		const actual = reducer({request: {amount: "100", term: 200}}, {type: CHANGE_FORM, name: "amount", value: "300"})
 		expect(actual).toEqual(expected)
 	})
 
-	/*	test("cut schedule", () => {
-		const expected = {
-			request: {amount: "200.00", term: 50, issueDate: "30.03.2022"},
-			schedule: {
-				payments: [
-					{paymentDate: "30.01.2022"}
-				],
-				fullAmount: "3 000.00"
-			}
-		}
-		const reducer = Reducer(storage, {calculateSchedule: () => expected.schedule})
-		const actual = reducer({request: {amount: 100, term: 200}}, {type: CUT_SCHEDULE, amount: 200, issueDate: "30.03.2022", term: 50})
-		expect(actual).toEqual(expected)
-	})*/
-
 	test("add early", () => {
 		const expected = {request: {earlyRepayment: {"10.11.2021": {}}}, schedule: defaultSchedule}
-		const actual = reducer({request: expected.request}, {type: ADD_EARLY, date: "10.11.2021", amount: 1000})
+		const actual = reducer({request: expected.request}, {type: ADD_EARLY, date: "10.11.2021", amount: "1000"})
 		expect(actual).toEqual(expected)
 		expect.assertions(2)
 	})
@@ -84,7 +69,7 @@ describe("Reducer should", () => {
 
 
 	test("default", () => {
-		const expected = {request: {amount: 300, term: 200}}
+		const expected = {request: {amount: "300", term: 200}}
 		const actual = reducer(expected, {type: "any"})
 		expect(actual).toEqual(expected)
 

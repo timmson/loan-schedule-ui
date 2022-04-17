@@ -13,7 +13,7 @@ describe("Field should", () => {
 				description={"value"}
 				value={"value"}
 				onChange={(event) => event}
-			>X</Field>
+			/>
 		)
 	})
 
