@@ -1,5 +1,4 @@
 import React, {useReducer} from "react"
-import PropTypes from "prop-types"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faArrowAltCircleDown, faArrowAltCircleUp} from "@fortawesome/free-regular-svg-icons"
 
@@ -7,8 +6,13 @@ import {INIT, SET_DEFAULT} from "./constants"
 import Context from "./context"
 import Form from "./form"
 import Schedule from "./schedule"
+import {ActionType, StateType} from "./types"
 
-export default function App(props) {
+type AppProps = {
+	reducer: (state: StateType, action: ActionType) => StateType
+}
+
+export default function App(props: AppProps) {
 	const [state, dispatch] = useReducer(props.reducer, {}, () => props.reducer({}, {type: INIT}))
 	const reset = () => dispatch({type: SET_DEFAULT})
 
@@ -43,8 +47,4 @@ export default function App(props) {
 			</div>
 		</Context.Provider>
 	)
-}
-
-App.propTypes = {
-	reducer: PropTypes.func.isRequired
 }

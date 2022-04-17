@@ -1,5 +1,4 @@
 import React, {useContext, useState} from "react"
-import PropTypes from "prop-types"
 
 import {toM} from "./money"
 import Payment from "./payment"
@@ -7,8 +6,13 @@ import Context from "./context"
 import {ADD_EARLY, DELETE_EARLY} from "./constants"
 import Field from "./field"
 import EarlyModal from "./early-modal"
+import {ScheduleType} from "./types"
 
-export default function Schedule(props) {
+type ScheduleProps = {
+	schedule: ScheduleType
+}
+
+export default function Schedule(props: ScheduleProps) {
 	const schedule = props.schedule
 
 	const isEarly = (payment) => ((parseInt(payment.principalAmount) > 0) && (parseInt(payment.interestAmount) === 0))
@@ -69,11 +73,11 @@ export default function Schedule(props) {
 				<table className="table table-hover table-bordered w-100 border-dark">
 					<thead className="table-secondary">
 						<tr className={"desktop"}>
-							<th rowSpan="2">Date</th>
-							<th rowSpan="2">Payment, $</th>
-							<th rowSpan="2">Min. payment, $</th>
-							<th colSpan="2">Inc.</th>
-							<th rowSpan="2">Balance, $</th>
+							<th rowSpan={2}>Date</th>
+							<th rowSpan={2}>Payment, $</th>
+							<th rowSpan={2}>Min. payment, $</th>
+							<th colSpan={2}>Inc.</th>
+							<th rowSpan={2}>Balance, $</th>
 						</tr>
 						<tr className={"desktop"}>
 							<th>Principal, $</th>
@@ -112,8 +116,4 @@ export default function Schedule(props) {
 			</div>
 		</div>
 	)
-}
-
-Schedule.propTypes = {
-	schedule: PropTypes.object.isRequired
 }

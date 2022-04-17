@@ -32,11 +32,11 @@ describe("Storage should", () => {
 
 	test("save request", () => {
 		const arrange = {
-			"amount": 2000000,
+			"amount": "2000000",
 			"issueDate": new Intl.DateTimeFormat("ru").format(new Date()),
 			"paymentAmount": "",
 			"paymentOnDay": 1,
-			"rate": 9.5,
+			"rate": "9.5",
 			"scheduleType": "ANNUITY",
 			"term": 240
 		}

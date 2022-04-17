@@ -1,7 +1,18 @@
 import React from "react"
-import PropTypes from "prop-types"
 
-export default function Field(props) {
+type FieldProps = {
+	name: string,
+	value: string,
+	description: string,
+	placeholder?: string,
+	type?: string,
+	step?: string,
+	min?: string,
+	max?: string,
+	onChange?: (event) => void
+}
+
+export default function Field(props: FieldProps) {
 
 	return (
 		<>
@@ -22,16 +33,4 @@ export default function Field(props) {
 			</div>
 		</>
 	)
-}
-
-Field.propTypes = {
-	name: PropTypes.string.isRequired,
-	value: PropTypes.any,
-	description: PropTypes.string.isRequired,
-	placeholder: PropTypes.string,
-	type: PropTypes.string,
-	step: PropTypes.string,
-	min: PropTypes.string,
-	max: PropTypes.string,
-	onChange: PropTypes.func
 }

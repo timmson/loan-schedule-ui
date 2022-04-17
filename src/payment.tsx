@@ -1,8 +1,13 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {toM} from "./money"
+import {PaymentType} from "./types"
 
-export default function Payment(props) {
+type PaymentProps = {
+	payment: PaymentType
+	onClick: (event) => void
+}
+
+export default function Payment(props: PaymentProps) {
 	const pay = props.payment
 
 	return (
@@ -17,9 +22,4 @@ export default function Payment(props) {
 			</tr>
 		</>
 	)
-}
-
-Payment.propTypes = {
-	payment: PropTypes.object.isRequired,
-	onClick: PropTypes.func
 }

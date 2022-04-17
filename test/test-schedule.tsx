@@ -7,13 +7,12 @@ import Schedule from "../src/schedule"
 describe("Schedule should", () => {
 
 	let component = null
-	const dispatch = () => {
-	}
+	const dispatch = () => {}
 	const schedule = {
 		payments: [
 			{
-				principalAmount: 1,
-				interestAmount: 0
+				principalAmount: "1",
+				interestAmount: "0"
 			}
 		]
 	}
