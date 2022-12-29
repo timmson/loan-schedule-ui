@@ -5,7 +5,7 @@ exports[`Payment should equal to snapshot 1`] = `
   className=""
   onClick={[Function]}
   style={
-    Object {
+    {
       "cursor": "pointer",
     }
   }
