@@ -74,7 +74,7 @@ exports[`Schedule should equal to snapshot 1`] = `
           className="orange"
           onClick={[Function]}
           style={
-            Object {
+            {
               "cursor": "pointer",
             }
           }

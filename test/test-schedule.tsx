@@ -17,26 +17,26 @@ describe("Schedule should", () => {
 		]
 	}
 
-	beforeAll(() => {
-		component = renderer.create(
-			<Context.Provider value={dispatch}>
-				<Schedule schedule={schedule}/>
-			</Context.Provider>
-		)
-	})
+	const createComponent = (schedule, dispatch) => renderer.create(
+		<Context.Provider value={dispatch}>
+			<Schedule schedule={schedule}/>
+		</Context.Provider>
+	)
 
 	test("trigger click", () => {
+		component = createComponent(schedule, dispatch)
+
 		act(() =>
 			component.root.findByType("tbody").children[0].props.onClick()
 		)
 
-		component.toJSON()
+		//component.toJSON()
 	})
 
 	test("equal to snapshot", () => {
+		component = createComponent(schedule, dispatch)
+
 		expect(component.toJSON()).toMatchSnapshot()
 	})
-
-	afterAll(() => component.unmount())
 
 })

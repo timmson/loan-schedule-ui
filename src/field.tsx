@@ -2,7 +2,7 @@ import React from "react"
 
 type FieldProps = {
 	name: string,
-	value: string,
+	value: string | number,
 	description: string,
 	placeholder?: string,
 	type?: string,
