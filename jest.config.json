@@ -1,5 +1,6 @@
 {
 	"collectCoverage": true,
+	"testEnvironment": "jsdom",
 	"collectCoverageFrom": [
 		"./src/*"
 	],

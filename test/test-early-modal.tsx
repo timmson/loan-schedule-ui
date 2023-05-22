@@ -1,29 +1,53 @@
 import React from "react"
-import renderer from "react-test-renderer"
+
+import {render, screen} from "@testing-library/react"
+import userEvent from "@testing-library/user-event"
+import "regenerator-runtime"
+
 import EarlyModal from "../src/early-modal"
+
+const okButton = "ok"
+const closeButton = "close"
 
 describe("EarlyModal should", () => {
 
-	let component = null
 
-	const createComponent = () => renderer.create(
-		<EarlyModal name={"name"} show={true} ok={{name: "ok", action: () => null}} close={{name: "close", action: () => null}}>
-            X
-		</EarlyModal>
-	)
-
-	/*	test("trigger close button", () => {
-		component = createComponent()
-		
-		act(() =>
-			component.root.			
+	test("ok by clicking 'Ok' button", async () => {
+		render(
+			<EarlyModal name={"name"} show={true} ok={{name: okButton, action: () => expect(true).toBeTruthy()}}
+						close={{name: closeButton, action: () => expect(false).toBeTruthy()}}>
+				X
+			</EarlyModal>
 		)
-	})*/
 
-	test("equal to snapshot", () => {
-		component = createComponent()
+		await userEvent.click(screen.getByText(okButton))
 
-		expect(component.toJSON()).toMatchSnapshot()
+		expect.assertions(1)
+	})
+
+
+	test("close by clicking 'Close' button", async () => {
+		render(
+			<EarlyModal name={"name"} show={true} ok={{name: "ok", action: () => expect(false).toBeTruthy()}} close={{name: closeButton, action: () => expect(true).toBeTruthy()}}>
+				X
+			</EarlyModal>
+		)
+
+		await userEvent.click(screen.getByText(closeButton))
+
+		expect.assertions(1)
+	})
+
+	test("close by clicking 'cross'", async () => {
+		render(
+			<EarlyModal name={"name"} show={true} ok={{name: "ok", action: () => expect(false).toBeTruthy()}} close={{name: closeButton, action: () => expect(true).toBeTruthy()}}>
+				X
+			</EarlyModal>
+		)
+
+		await userEvent.click(screen.getByRole("button", {name: "Close"}))
+
+		expect.assertions(1)
 	})
 
 })
