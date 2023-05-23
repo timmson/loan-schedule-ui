@@ -15,8 +15,8 @@ describe("EarlyModal should", () => {
 	test("ok by clicking 'Ok' button", async () => {
 		render(
 			<EarlyModal name={"name"} show={true} ok={{name: okButton, action: () => expect(true).toBeTruthy()}}
-						close={{name: closeButton, action: () => expect(false).toBeTruthy()}}>
-				X
+				close={{name: closeButton, action: () => expect(false).toBeTruthy()}}>
+                X
 			</EarlyModal>
 		)
 
@@ -28,8 +28,9 @@ describe("EarlyModal should", () => {
 
 	test("close by clicking 'Close' button", async () => {
 		render(
-			<EarlyModal name={"name"} show={true} ok={{name: "ok", action: () => expect(false).toBeTruthy()}} close={{name: closeButton, action: () => expect(true).toBeTruthy()}}>
-				X
+			<EarlyModal name={"name"} show={true} ok={{name: "ok", action: () => expect(false).toBeTruthy()}}
+				close={{name: closeButton, action: () => expect(true).toBeTruthy()}}>
+                X
 			</EarlyModal>
 		)
 
@@ -41,7 +42,7 @@ describe("EarlyModal should", () => {
 	test("close by clicking 'cross'", async () => {
 		render(
 			<EarlyModal name={"name"} show={true} ok={{name: "ok", action: () => expect(false).toBeTruthy()}} close={{name: closeButton, action: () => expect(true).toBeTruthy()}}>
-				X
+                X
 			</EarlyModal>
 		)
 
