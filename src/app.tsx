@@ -19,16 +19,15 @@ export default function App(props: AppProps) {
 	return (
 		<Context.Provider value={dispatch}>
 			<Form request={state.request}/>
-
 			<div className="row text-start mt-1 orange border-bottom border-2 border-dark pb-2">
-				<div className="col-sm-4 orange">
-					<b>Overall %</b>: {state.schedule.overAllInterest}
+				<div className="col-lg-4 orange">
+					<b>Переплата, ₽</b>: {state.schedule.overAllInterest}
 				</div>
-				<div className="col-sm-4 orange">
-					<b>Full amount, $</b>: {state.schedule.fullAmount}
+				<div className="col-lg-4 orange">
+					<b>Полная стоимость, ₽</b>: {state.schedule.fullAmount}
 				</div>
-				<div className="col-sm-4 orange">
-					<b>Last payment</b>: {state.schedule.lastPaymentDate} (~{state.schedule.termInYear} years)
+				<div className="col-lg-4 orange">
+					<b>Последний платеж</b>: {state.schedule.lastPaymentDate} (~{state.schedule.termInYear} год(а)/лет)
 				</div>
 			</div>
 			<div className="row text-end mt-1">

@@ -73,21 +73,21 @@ export default function Schedule(props: ScheduleProps) {
 				<table className="table table-hover table-bordered w-100 border-dark">
 					<thead className="table-secondary">
 						<tr className={"desktop"}>
-							<th rowSpan={2}>Date</th>
-							<th rowSpan={2}>Payment, $</th>
-							<th rowSpan={2}>Min. payment, $</th>
-							<th colSpan={2}>Inc.</th>
-							<th rowSpan={2}>Balance, $</th>
+							<th rowSpan={2}>Дата</th>
+							<th rowSpan={2}>Платеж, ₽</th>
+							<th rowSpan={2}>Мин. платеж, ₽</th>
+							<th colSpan={2}>включая</th>
+							<th rowSpan={2}>Остаток, ₽</th>
 						</tr>
 						<tr className={"desktop"}>
-							<th>Principal, $</th>
-							<th>Interest, $</th>
+							<th>Тело долга, $</th>
+							<th>Проценты, $</th>
 						</tr>
 						<tr className={"mobile"}>
-							<th>Date</th>
-							<th>Payment, $</th>
-							<th>Interest, $</th>
-							<th>Balance, $</th>
+							<th>Дата</th>
+							<th>Платеж, $</th>
+							<th>Проценты, $</th>
+							<th>Остаток, $</th>
 						</tr>
 					</thead>
 					<tbody>

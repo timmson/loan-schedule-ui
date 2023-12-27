@@ -16,10 +16,10 @@ export default function Field(props: FieldProps) {
 
 	return (
 		<>
-			<div className="col-sm-3 pt-2">
+			<div className="col-lg-3 pt-2">
 				<label htmlFor={props.name}>{props.description}</label>
 			</div>
-			<div className="col-sm-3">
+			<div className="col-lg-3">
 				<input className="form-control"
 					   name={props.name}
 					   value={props.value}

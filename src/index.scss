@@ -1,40 +1,40 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+html, body {
+  font-size: 1.1em;
+}
+
 .orange {
   color: #fd680e;
 }
 
 .table-bordered {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .desktop {
-  display: table-row;
-}
-
-.desktop-cell {
-  display: table-cell;
-}
-
-
-.mobile {
   display: none;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2) {
-  html, body {
-    font-size: 13pt;
-  }
+.desktop-cell {
+  display: none;
+}
+
+.mobile {
+  display: table-row;
+}
+
+@media (min-width: 670px) {
 
   .desktop {
-    display: none;
+    display: table-row;
   }
 
   .desktop-cell {
-    display: none;
+    display: table-cell;
   }
 
   .mobile {
-    display: table-row;
+    display: none;
   }
 }
