@@ -6,19 +6,32 @@ exports[`Form should equal to snapshot 1`] = `
   onBlur={[Function]}
 >
   <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <h2
+        className="orange text-center"
+      >
+        График погашения кредита
+      </h2>
+    </div>
+  </div>
+  <div
     className="row mt-2 text-left"
   >
     <div
-      className="col-sm-3 pt-2"
+      className="col-lg-3 pt-2"
     >
       <label
         htmlFor="amount"
       >
-        Loan amount, $
+        Сумма кредита, ₽
       </label>
     </div>
     <div
-      className="col-sm-3"
+      className="col-lg-3"
     >
       <input
         className="form-control"
@@ -27,22 +40,22 @@ exports[`Form should equal to snapshot 1`] = `
       />
     </div>
     <div
-      className="col-sm-3 pt-2"
+      className="col-lg-3 pt-2"
     >
       <label
         htmlFor="paymentAmount"
       >
-        Payment amount, $
+        Сумма платежа, ₽
       </label>
     </div>
     <div
-      className="col-sm-3"
+      className="col-lg-3"
     >
       <input
         className="form-control"
         name="paymentAmount"
         onChange={[Function]}
-        placeholder="Payment amount"
+        placeholder="Сумма платежа, ₽"
       />
     </div>
   </div>
@@ -50,16 +63,16 @@ exports[`Form should equal to snapshot 1`] = `
     className="row mt-2 text-left"
   >
     <div
-      className="col-sm-3 pt-2"
+      className="col-lg-3 pt-2"
     >
       <label
         htmlFor="term"
       >
-        Term, months
+        Срок, месяцев
       </label>
     </div>
     <div
-      className="col-sm-3"
+      className="col-lg-3"
     >
       <input
         className="form-control"
@@ -69,16 +82,16 @@ exports[`Form should equal to snapshot 1`] = `
       />
     </div>
     <div
-      className="col-sm-3 pt-2"
+      className="col-lg-3 pt-2"
     >
       <label
         htmlFor="issueDate"
       >
-        Issue date
+        Дата выдача
       </label>
     </div>
     <div
-      className="col-sm-3"
+      className="col-lg-3"
     >
       <input
         className="form-control"
@@ -92,16 +105,16 @@ exports[`Form should equal to snapshot 1`] = `
     className="row mt-2 text-left border-bottom border-2 border-dark pb-2"
   >
     <div
-      className="col-sm-3 pt-2"
+      className="col-lg-3 pt-2"
     >
       <label
         htmlFor="rate"
       >
-        Annual rate, %
+        Ставка, %
       </label>
     </div>
     <div
-      className="col-sm-3"
+      className="col-lg-3"
     >
       <input
         className="form-control"
@@ -112,16 +125,16 @@ exports[`Form should equal to snapshot 1`] = `
       />
     </div>
     <div
-      className="col-sm-3 pt-2"
+      className="col-lg-3 pt-2"
     >
       <label
         htmlFor="paymentOnDay"
       >
-        Payment on day
+        День платежа
       </label>
     </div>
     <div
-      className="col-sm-3"
+      className="col-lg-3"
     >
       <input
         className="form-control"

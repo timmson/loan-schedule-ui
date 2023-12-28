@@ -3,7 +3,7 @@
 exports[`Field should equal to snapshot 1`] = `
 [
   <div
-    className="col-sm-3 pt-2"
+    className="col-lg-3 pt-2"
   >
     <label
       htmlFor="name"
@@ -12,7 +12,7 @@ exports[`Field should equal to snapshot 1`] = `
     </label>
   </div>,
   <div
-    className="col-sm-3"
+    className="col-lg-3"
   >
     <input
       className="form-control"

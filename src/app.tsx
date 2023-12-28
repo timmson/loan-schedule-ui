@@ -2,19 +2,18 @@ import React, {useReducer} from "react"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faArrowAltCircleDown, faArrowAltCircleUp} from "@fortawesome/free-regular-svg-icons"
 
-import {INIT, SET_DEFAULT} from "./constants"
+import {INIT} from "./constants"
 import Context from "./context"
 import Form from "./form"
 import Schedule from "./schedule"
 import {ActionType, StateType} from "./types"
 
 type AppProps = {
-	reducer: (state: StateType, action: ActionType) => StateType
+    reducer: (state: StateType, action: ActionType) => StateType
 }
 
 export default function App(props: AppProps) {
 	const [state, dispatch] = useReducer(props.reducer, {}, () => props.reducer({}, {type: INIT}))
-	const reset = () => dispatch({type: SET_DEFAULT})
 
 	return (
 		<Context.Provider value={dispatch}>
@@ -32,7 +31,6 @@ export default function App(props: AppProps) {
 			</div>
 			<div className="row text-end mt-1">
 				<div className="col">
-					<a href="#" onClick={() => reset()}>[Reset]</a>
 					<a href="#footer" id="header">[Bottom <FontAwesomeIcon icon={faArrowAltCircleDown}/>]</a>
 				</div>
 			</div>

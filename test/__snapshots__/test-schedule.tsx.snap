@@ -19,53 +19,53 @@ exports[`Schedule should equal to snapshot 1`] = `
           <th
             rowSpan={2}
           >
-            Date
+            Дата
           </th>
           <th
             rowSpan={2}
           >
-            Payment, $
+            Платеж, ₽
           </th>
           <th
             rowSpan={2}
           >
-            Min. payment, $
+            Мин. платеж, ₽
           </th>
           <th
             colSpan={2}
           >
-            Inc.
+            включая
           </th>
           <th
             rowSpan={2}
           >
-            Balance, $
+            Остаток, ₽
           </th>
         </tr>
         <tr
           className="desktop"
         >
           <th>
-            Principal, $
+            Тело долга, $
           </th>
           <th>
-            Interest, $
+            Проценты, $
           </th>
         </tr>
         <tr
           className="mobile"
         >
           <th>
-            Date
+            Дата
           </th>
           <th>
-            Payment, $
+            Платеж, $
           </th>
           <th>
-            Interest, $
+            Проценты, $
           </th>
           <th>
-            Balance, $
+            Остаток, $
           </th>
         </tr>
       </thead>
